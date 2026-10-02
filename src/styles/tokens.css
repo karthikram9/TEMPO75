@@ -1,0 +1,46 @@
+:root {
+  /* Canvas & Three Surface Levels (Daylight Architectural Aesthetic) */
+  --color-bg-base: #F4F5F6;          /* Level 1: Open architectural canvas */
+  --color-bg-secondary: #ECEEF0;     /* Recessed tracks, segmented controls */
+  --color-surface-base: #FFFFFF;     /* Level 2: Primary functional surfaces */
+  --color-surface-elevated: #F9FAFB; /* Level 2 elevated */
+  --color-surface-subtle: #E8EAED;   /* Inactive pills, subtle tags */
+  --color-surface-glass: rgba(255, 255, 255, 0.88); /* Level 3: Overlay/floating surfaces */
+
+  /* Structural Borders */
+  --color-border-base: #E2E4E8;      /* Clean structural divider */
+  --color-border-subtle: rgba(0, 0, 0, 0.05); /* Soft inner borders */
+  --color-border-strong: #D1D5DB;    /* Interactive input borders */
+
+  /* Typography */
+  --color-text-primary: #0A0A0C;    /* Deep pitch charcoal (14:1+ contrast on base) */
+  --color-text-secondary: #4A4D54;  /* Neutral body copy */
+  --color-text-muted: #71717A;      /* Monospace labels & metadata (4.6:1+ contrast on white) */
+  --color-text-inverse: #FFFFFF;    /* White text on dark/colored elements */
+
+  /* Athletic Performance Accent (Electric Chartreuse / Acid Citron) */
+  /* RULE: Use exclusively as background pill, active indicator dot, or non-text graphic. NEVER text on white. */
+  --color-accent: #CEF024;          /* Electric chartreuse for pills & accents */
+  --color-accent-hover: #BFDE1D;    /* Interactive hover */
+  --color-accent-active: #B0CE16;   /* Active pressed */
+  --color-accent-muted: rgba(206, 240, 36, 0.18); /* Soft accent tint */
+
+  /* Restrained Status Tokens */
+  --color-success: #16A34A;
+  --color-success-muted: rgba(22, 163, 74, 0.12);
+  --color-warning: #D97706;
+  --color-warning-muted: rgba(217, 119, 6, 0.12);
+  --color-danger: #DC2626;
+  --color-danger-muted: rgba(220, 38, 38, 0.12);
+
+  /* Diffused Daylight Shadows */
+  --shadow-daylight: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  --shadow-floating: 0 12px 32px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  --shadow-pill: 0 4px 14px rgba(206, 240, 36, 0.35);
+
+  /* iOS Safe Area Environment Insets */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+}
