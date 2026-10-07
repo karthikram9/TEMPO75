@@ -64,7 +64,7 @@ export const MobileDrawer: React.FC = () => {
   return (
     <div
       className={cn(
-        'lg:hidden fixed inset-0 z-50 transition-visibility duration-300',
+        'fixed inset-0 z-50 transition-visibility duration-300',
         isDrawerOpen ? 'visible pointer-events-auto' : 'invisible pointer-events-none'
       )}
       aria-hidden={!isDrawerOpen}

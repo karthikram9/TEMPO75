@@ -7,22 +7,25 @@ import { DesktopSidebar } from './DesktopSidebar';
 
 export const AppShell: React.FC = () => {
   const location = useLocation();
+  const isDashboard = location.pathname === '/dashboard';
 
   return (
     <HeaderProvider>
-      <div className="min-h-screen w-full flex bg-background text-text-primary antialiased selection:bg-accent selection:text-text-primary">
-        {/* Desktop Sidebar (hidden on <1024px, fixed width on >=1024px) */}
-        <DesktopSidebar />
+      <div className={`min-h-screen w-full flex ${isDashboard ? 'bg-[#F4F5F0]' : 'bg-background'} text-text-primary antialiased selection:bg-[#1A382B] selection:text-white`}>
+        {/* Desktop Sidebar (hidden on /dashboard to match Desktop Reference, active on other pages >=1024px) */}
+        {!isDashboard && <DesktopSidebar />}
 
-        {/* Mobile/Tablet Collapsible Left Drawer (active on <1024px) */}
+        {/* Collapsible Left Drawer (available across viewports) */}
         <MobileDrawer />
 
         {/* Content Column */}
         <div className="flex-1 flex flex-col min-w-0">
-          {/* Mobile Header (hidden on desktop >=1024px) */}
-          <div className="lg:hidden">
-            <MobileHeader />
-          </div>
+          {/* Mobile Header (hidden on desktop >=1024px, and hidden on /dashboard where HomeHeader is used) */}
+          {!isDashboard && (
+            <div className="lg:hidden">
+              <MobileHeader />
+            </div>
+          )}
 
           {/* Main Document Scroll Viewport */}
           <main className="flex-1 w-full" key={location.pathname}>

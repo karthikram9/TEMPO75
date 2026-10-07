@@ -435,6 +435,7 @@ export function useDashboardData() {
     topProgression,
     weightSnapshot,
     weeklyStats,
+    workoutSessions,
     logWeight,
     refetch,
   };
