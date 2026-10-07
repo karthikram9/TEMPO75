@@ -71,7 +71,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between text-xs font-mono">
           <div className="flex items-center gap-2">
-            <span className="text-text-primary font-black px-2 py-0.5 rounded bg-accent text-[11px] shadow-xs">
+            <span className="text-white font-black px-2.5 py-0.5 rounded-full bg-[#1A382B] text-[11px] shadow-xs">
               #{String(exerciseIndex + 1).padStart(2, '0')}
             </span>
             <span className="text-text-tertiary">
@@ -191,7 +191,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
             <button
               type="button"
               onClick={onNextExercise}
-              className="w-full sm:w-auto min-h-[48px] px-6 rounded-xl bg-accent hover:opacity-95 text-text-primary font-mono font-black text-sm uppercase tracking-wider transition-colors active:scale-95 shadow-sm"
+              className="w-full sm:w-auto min-h-[48px] px-6 rounded-full bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] text-white font-mono font-black text-sm uppercase tracking-wider transition-colors active:scale-95 shadow-sm"
             >
               Next Exercise &rarr;
             </button>

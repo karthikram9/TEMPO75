@@ -129,7 +129,7 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
               onClick={() => goToExercise(idx)}
               className={`min-h-[38px] px-3.5 py-1.5 rounded-full text-xs font-mono font-bold flex items-center gap-1.5 shrink-0 transition-all active:scale-95 touch-manipulation ${
                 isCurrent
-                  ? 'bg-accent border border-accent/40 text-text-primary font-black shadow-pill'
+                  ? 'bg-[#1A382B] border-transparent text-white font-black shadow-sm'
                   : isDone
                   ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
                   : 'bg-surface-base border border-border-subtle text-text-secondary hover:text-text-primary hover:bg-surface-subtle shadow-sm'

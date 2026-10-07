@@ -161,11 +161,11 @@ export const LoginPage: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-12 sm:h-13 rounded-full bg-accent hover:opacity-95 active:opacity-90 disabled:opacity-60 text-text-primary font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-pill transition-all touch-manipulation focus:outline-none focus:ring-2 focus:ring-accent"
+            className="w-full h-12 sm:h-13 rounded-full bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] disabled:opacity-60 text-white font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm transition-all touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#1A382B] cursor-pointer"
           >
             {isSubmitting ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-text-primary" />
+                <Loader2 className="w-4 h-4 animate-spin text-white" />
                 <span>SIGNING IN...</span>
               </>
             ) : (

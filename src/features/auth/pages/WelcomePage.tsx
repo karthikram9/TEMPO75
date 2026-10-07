@@ -39,7 +39,7 @@ export const WelcomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen min-h-[100dvh] w-full bg-bg-base text-text-primary flex flex-col justify-between overflow-x-hidden selection:bg-accent selection:text-text-primary relative">
+    <div className="min-h-screen min-h-[100dvh] w-full bg-bg-base text-text-primary flex flex-col justify-between overflow-x-hidden selection:bg-[#1A382B] selection:text-white relative">
       {/* Subtle architectural daylight ambient glow */}
       <div
         className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(206,240,36,0.12),transparent_70%)] pointer-events-none z-0"
@@ -93,7 +93,7 @@ export const WelcomePage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => navigate('/signup')}
-                className="h-13 px-8 rounded-full bg-accent hover:opacity-95 active:scale-[0.99] text-text-primary font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 shadow-pill transition-all touch-manipulation focus:outline-none focus:ring-2 focus:ring-accent"
+                className="h-13 px-8 rounded-full bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] active:scale-[0.99] text-white font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 shadow-sm transition-all touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#1A382B] cursor-pointer"
               >
                 <span>GET STARTED</span>
                 <ArrowRight className="w-4 h-4" />

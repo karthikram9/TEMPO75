@@ -188,7 +188,7 @@ export const JourneyScreen: React.FC = () => {
                 DAY {String(activeDayDetail.dayNumber).padStart(2, '0')}
               </span>
               {activeDayDetail.isToday && (
-                <span className="text-2xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-accent text-text-primary uppercase tracking-wider">
+                <span className="text-2xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#1A382B] text-white uppercase tracking-wider">
                   TODAY
                 </span>
               )}
@@ -225,7 +225,7 @@ export const JourneyScreen: React.FC = () => {
                 onClick={() =>
                   navigate(`/workout?day=${activeDayDetail.dayNumber}&start=true`)
                 }
-                className="flex-1 sm:flex-none min-h-[44px] px-5 rounded-full bg-accent hover:opacity-90 text-text-primary text-xs font-mono font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-subtle active:scale-95"
+                className="flex-1 sm:flex-none min-h-[44px] px-5 rounded-full bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] text-white text-xs font-mono font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm active:scale-95 cursor-pointer"
               >
                 <span>{activeDayDetail.isCompleted ? 'Review Workout' : 'Start Workout'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />

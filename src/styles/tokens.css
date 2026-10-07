@@ -1,42 +1,41 @@
 :root {
-  /* Canvas & Three Surface Levels (Daylight Architectural Aesthetic) */
-  --color-bg-base: #F4F5F6;          /* Level 1: Open architectural canvas */
-  --color-bg-secondary: #ECEEF0;     /* Recessed tracks, segmented controls */
+  /* Canvas & Three Surface Levels (Matching Home Monochromatic Green/Sage System) */
+  --color-bg-base: #F4F5F0;          /* Clean pale sage/cream architectural canvas */
+  --color-bg-secondary: #EDF0EA;     /* Recessed tracks, segmented controls */
   --color-surface-base: #FFFFFF;     /* Level 2: Primary functional surfaces */
-  --color-surface-elevated: #F9FAFB; /* Level 2 elevated */
-  --color-surface-subtle: #E8EAED;   /* Inactive pills, subtle tags */
-  --color-surface-glass: rgba(255, 255, 255, 0.88); /* Level 3: Overlay/floating surfaces */
+  --color-surface-elevated: #F9FAF8; /* Level 2 elevated */
+  --color-surface-subtle: #EDF0EA;   /* Inactive pills, subtle tags */
+  --color-surface-glass: rgba(244, 245, 240, 0.92); /* Level 3: Overlay/floating surfaces */
 
   /* Structural Borders */
-  --color-border-base: #E2E4E8;      /* Clean structural divider */
-  --color-border-subtle: rgba(0, 0, 0, 0.05); /* Soft inner borders */
-  --color-border-strong: #D1D5DB;    /* Interactive input borders */
+  --color-border-base: #E6EAE2;      /* Clean structural divider matching Home */
+  --color-border-subtle: #DEE5DC;    /* Soft inner borders */
+  --color-border-strong: #1A382B;    /* Interactive input borders */
 
   /* Typography */
-  --color-text-primary: #0A0A0C;    /* Deep pitch charcoal (14:1+ contrast on base) */
-  --color-text-secondary: #4A4D54;  /* Neutral body copy */
-  --color-text-muted: #71717A;      /* Monospace labels & metadata (4.6:1+ contrast on white) */
+  --color-text-primary: #141815;    /* Deep pitch athletic dark matching Home */
+  --color-text-secondary: #48544D;  /* Neutral body copy */
+  --color-text-muted: #6E7A72;      /* Monospace labels & metadata */
   --color-text-inverse: #FFFFFF;    /* White text on dark/colored elements */
 
-  /* Athletic Performance Accent (Electric Chartreuse / Acid Citron) */
-  /* RULE: Use exclusively as background pill, active indicator dot, or non-text graphic. NEVER text on white. */
-  --color-accent: #CEF024;          /* Electric chartreuse for pills & accents */
-  --color-accent-hover: #BFDE1D;    /* Interactive hover */
-  --color-accent-active: #B0CE16;   /* Active pressed */
-  --color-accent-muted: rgba(206, 240, 36, 0.18); /* Soft accent tint */
+  /* Athletic Performance Accent (Home Primary Forest Green / Sage) */
+  --color-accent: #1A382B;          /* Deep forest athletic primary green */
+  --color-accent-hover: #234A39;    /* Interactive hover */
+  --color-accent-active: #142C22;   /* Active pressed */
+  --color-accent-muted: #EDF0EA;    /* Soft sage tint */
 
   /* Restrained Status Tokens */
-  --color-success: #16A34A;
-  --color-success-muted: rgba(22, 163, 74, 0.12);
+  --color-success: #1A382B;
+  --color-success-muted: #EBF2EA;
   --color-warning: #D97706;
   --color-warning-muted: rgba(217, 119, 6, 0.12);
   --color-danger: #DC2626;
   --color-danger-muted: rgba(220, 38, 38, 0.12);
 
   /* Diffused Daylight Shadows */
-  --shadow-daylight: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
-  --shadow-floating: 0 12px 32px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
-  --shadow-pill: 0 4px 14px rgba(206, 240, 36, 0.35);
+  --shadow-daylight: 0 4px 20px -2px rgba(20, 24, 21, 0.04), 0 2px 6px -1px rgba(20, 24, 21, 0.02);
+  --shadow-floating: 0 12px 32px -4px rgba(20, 24, 21, 0.08), 0 4px 12px -2px rgba(20, 24, 21, 0.03);
+  --shadow-pill: 0 4px 14px rgba(26, 56, 43, 0.22);
 
   /* iOS Safe Area Environment Insets */
   --safe-area-top: env(safe-area-inset-top, 0px);

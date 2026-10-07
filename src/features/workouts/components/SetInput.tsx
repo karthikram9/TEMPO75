@@ -248,7 +248,7 @@ export const SetInput: React.FC<SetInputProps> = ({
         className={`w-full min-h-[52px] sm:min-h-[56px] rounded-xl font-mono font-black uppercase tracking-wider text-sm sm:text-base flex items-center justify-center gap-2 transition-all active:scale-[0.98] ${
           isSaving
             ? 'bg-surface-tertiary text-text-muted cursor-not-allowed'
-            : 'bg-accent hover:opacity-95 text-text-primary shadow-sm'
+            : 'bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] text-white shadow-sm cursor-pointer'
         }`}
       >
         {isSaving ? (

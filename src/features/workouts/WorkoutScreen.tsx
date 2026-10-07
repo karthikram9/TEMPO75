@@ -395,7 +395,7 @@ export const WorkoutScreen: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsLoggingMode(true)}
-                className="w-full min-h-[54px] sm:min-h-[58px] rounded-full bg-accent hover:opacity-95 text-text-primary font-black text-base uppercase tracking-wider font-mono shadow-pill flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-accent"
+                className="w-full min-h-[54px] sm:min-h-[58px] rounded-full bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] text-white font-black text-base uppercase tracking-wider font-mono shadow-sm flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#1A382B] cursor-pointer"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <polygon points="5 3 19 12 5 21 5 3" />

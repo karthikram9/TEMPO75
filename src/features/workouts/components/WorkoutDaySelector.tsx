@@ -88,7 +88,7 @@ export const WorkoutDaySelector: React.FC<WorkoutDaySelectorProps> = ({
               onClick={() => onSelectDay(day)}
               className={`min-w-[68px] min-h-[52px] sm:min-h-[56px] px-2.5 py-1.5 rounded-2xl flex flex-col items-center justify-center shrink-0 border transition-all text-xs font-mono select-none active:scale-95 ${
                 isSelected
-                  ? 'bg-accent border-accent/40 text-text-primary font-black shadow-pill'
+                  ? 'bg-[#1A382B] border-transparent text-white font-black shadow-sm'
                   : isActive
                   ? 'bg-surface-base border-2 border-text-primary text-text-primary shadow-daylight'
                   : isRest

@@ -46,11 +46,11 @@ export const TempoBrandmark: React.FC<TempoBrandmarkProps> = ({
 
   const current = sizeClasses[size];
 
-  // Colors based on variant
-  const slashBg = variant === 'dark' ? 'bg-[#FF5000]' : 'bg-[#CEF024]';
-  const slashGlow = variant === 'dark' ? 'shadow-[0_0_12px_rgba(255,80,0,0.5)]' : 'shadow-[0_0_10px_rgba(206,240,36,0.35)]';
-  const tempoTextColor = variant === 'dark' ? 'text-white' : 'text-[#0A0A0C]';
-  const numberTextColor = variant === 'dark' ? 'text-[#FF5000]' : 'text-[#7A9900]';
+  // Colors based on variant (Aligned to Home monochromatic green/sage system)
+  const slashBg = 'bg-[#1A382B]';
+  const slashGlow = 'shadow-xs';
+  const tempoTextColor = variant === 'dark' ? 'text-white' : 'text-[#141815]';
+  const numberTextColor = variant === 'dark' ? 'text-[#58A672]' : 'text-[#1A382B]';
 
   // The distinctive TEMPO 75 double-slash emblem
   const DoubleSlashIcon = (

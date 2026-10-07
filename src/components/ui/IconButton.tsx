@@ -31,7 +31,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       'inline-flex items-center justify-center select-none transition-all duration-150 active:scale-95 disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
     const variantStyles: Record<IconButtonVariant, string> = {
-      primary: 'bg-accent text-text-primary hover:opacity-95 active:opacity-90 border border-accent/40 shadow-pill',
+      primary: 'bg-accent text-white hover:opacity-95 active:opacity-90 border border-transparent shadow-sm',
       secondary:
         'bg-surface-base text-text-primary hover:bg-surface-subtle active:bg-border-subtle/30 border border-border-subtle shadow-daylight',
       outline:

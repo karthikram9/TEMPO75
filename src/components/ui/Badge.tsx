@@ -18,8 +18,8 @@ export const Badge: React.FC<BadgeProps> = ({
 }) => {
   const variantStyles: Record<BadgeVariant, string> = {
     default: 'bg-surface-subtle text-text-secondary border-border',
-    accent: 'bg-accent text-text-primary border-black/5 font-bold',
-    success: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+    accent: 'bg-[#EDF0EA] text-[#1A382B] border-[#DEE5DC] font-bold',
+    success: 'bg-[#EBF2EA] text-[#1A382B] border-[#D4E2D2]',
     warning: 'bg-amber-50 text-amber-800 border-amber-200',
     danger: 'bg-red-50 text-red-800 border-red-200',
     outline: 'bg-transparent text-text-primary border-border',

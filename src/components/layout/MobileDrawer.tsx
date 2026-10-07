@@ -69,39 +69,39 @@ export const MobileDrawer: React.FC = () => {
       )}
       aria-hidden={!isDrawerOpen}
     >
-      {/* Backdrop overlay */}
+      {/* Subtle translucent backdrop overlay without ANY blur so background content remains sharp and clearly visible */}
       <div
         data-testid="drawer-backdrop"
         onClick={closeDrawer}
         className={cn(
-          'fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-in-out',
+          'fixed inset-0 bg-black/25 transition-opacity duration-300 ease-in-out',
           isDrawerOpen ? 'opacity-100' : 'opacity-0'
         )}
         aria-hidden="true"
       />
 
-      {/* Drawer panel */}
+      {/* Floating Drawer Panel with smooth rounded corners matching Home green/sage theme */}
       <aside
         id="mobile-navigation-drawer"
         role="dialog"
         aria-modal="true"
         aria-label="Navigation drawer"
         className={cn(
-          'fixed top-0 left-0 bottom-0 z-50 flex flex-col',
-          'w-[280px] xs:w-[300px] sm:w-[320px] max-w-[85vw]',
-          'bg-surface-base border-r border-border shadow-floating',
-          'transition-transform duration-300 ease-out select-none',
-          isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
+          'fixed top-2.5 sm:top-3 left-2.5 sm:left-3 bottom-2.5 sm:bottom-3 z-50 flex flex-col',
+          'w-[285px] xs:w-[305px] sm:w-[320px] max-w-[calc(100vw-20px)]',
+          'bg-white rounded-3xl border border-[#E6EAE2] shadow-2xl',
+          'transition-transform duration-300 ease-out select-none overflow-hidden',
+          isDrawerOpen ? 'translate-x-0' : '-translate-x-[calc(100%+24px)]'
         )}
       >
         {/* Drawer Header (ChatGPT style top bar) */}
-        <div className="h-14 min-h-[56px] px-4 pt-safe flex items-center justify-between border-b border-border bg-white shrink-0">
+        <div className="h-14 min-h-[56px] px-4 pt-safe flex items-center justify-between border-b border-[#E6EAE2] bg-white shrink-0">
           <div className="flex items-center gap-2">
             {/* Top-left menu/toggle button */}
             <button
               type="button"
               onClick={closeDrawer}
-              className="w-11 h-11 -ml-1.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-text-primary hover:bg-surface-subtle active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="w-10 h-10 -ml-1 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl text-[#141815] hover:bg-[#EBF0EA] active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A382B]"
               aria-label="Close navigation menu"
               data-testid="drawer-menu-button"
             >
@@ -112,10 +112,10 @@ export const MobileDrawer: React.FC = () => {
             <NavLink
               to="/dashboard"
               onClick={(e) => handleLinkClick(e, '/dashboard')}
-              className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg"
+              className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A382B] rounded-lg"
               aria-label="Tempo 75 Home"
             >
-              <TempoBrandmark size="sm" variant="lime" />
+              <TempoBrandmark size="sm" variant="dark" />
             </NavLink>
           </div>
 
@@ -124,7 +124,7 @@ export const MobileDrawer: React.FC = () => {
             ref={closeButtonRef}
             type="button"
             onClick={closeDrawer}
-            className="w-11 h-11 -mr-1.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-text-secondary hover:text-text-primary hover:bg-surface-subtle active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="w-10 h-10 -mr-1 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl text-[#6E7A72] hover:text-[#141815] hover:bg-[#EBF0EA] active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A382B]"
             aria-label="Close navigation menu"
             data-testid="drawer-close-button"
           >
@@ -135,7 +135,7 @@ export const MobileDrawer: React.FC = () => {
         {/* Navigation list */}
         <div className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
           {/* Protocol Section */}
-          <div className="px-3 pb-2 text-2xs font-bold text-text-muted uppercase tracking-widest">
+          <div className="px-3 pb-2 text-2xs font-bold text-[#6E7A72] uppercase tracking-widest font-mono">
             Protocol
           </div>
           {PROTOCOL_LINKS.map((link) => {
@@ -147,11 +147,11 @@ export const MobileDrawer: React.FC = () => {
                 onClick={(e) => handleLinkClick(e, link.path)}
                 className={({ isActive }) =>
                   cn(
-                    'flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-sm font-semibold transition-all duration-150 min-h-[48px]',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+                    'flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-sm transition-all duration-150 min-h-[48px]',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A382B]',
                     isActive
-                      ? 'bg-surface-subtle text-text-primary font-bold border border-border shadow-subtle'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
+                      ? 'bg-[#EBF0EA] text-[#1A382B] font-bold border border-[#DEE5DC] shadow-xs'
+                      : 'text-[#48544D] hover:text-[#141815] hover:bg-[#F4F5F0] font-medium'
                   )
                 }
               >
@@ -160,7 +160,7 @@ export const MobileDrawer: React.FC = () => {
                     <Icon
                       className={cn(
                         'w-5 h-5 transition-colors',
-                        isActive ? 'text-text-primary' : 'text-text-muted'
+                        isActive ? 'text-[#1A382B]' : 'text-[#6E7A72]'
                       )}
                     />
                     <span className="uppercase tracking-wider text-xs font-bold">
@@ -168,7 +168,7 @@ export const MobileDrawer: React.FC = () => {
                     </span>
                     {isActive && (
                       <span
-                        className="w-2 h-2 rounded-full bg-accent ml-auto shrink-0 shadow-pill"
+                        className="w-2 h-2 rounded-full bg-[#1A382B] ml-auto shrink-0 shadow-xs"
                         aria-hidden="true"
                       />
                     )}
@@ -179,11 +179,11 @@ export const MobileDrawer: React.FC = () => {
           })}
 
           <div className="pt-3 px-1">
-            <Divider className="my-2 border-border-subtle" />
+            <Divider className="my-2 border-[#E6EAE2]" />
           </div>
 
           {/* System Section */}
-          <div className="px-3 py-2 text-2xs font-bold text-text-muted uppercase tracking-widest">
+          <div className="px-3 py-2 text-2xs font-bold text-[#6E7A72] uppercase tracking-widest font-mono">
             System
           </div>
           {SYSTEM_LINKS.map((link) => {
@@ -195,11 +195,11 @@ export const MobileDrawer: React.FC = () => {
                 onClick={(e) => handleLinkClick(e, link.path)}
                 className={({ isActive }) =>
                   cn(
-                    'flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-sm font-semibold transition-all duration-150 min-h-[48px]',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+                    'flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-sm transition-all duration-150 min-h-[48px]',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A382B]',
                     isActive
-                      ? 'bg-surface-subtle text-text-primary font-bold border border-border shadow-subtle'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
+                      ? 'bg-[#EBF0EA] text-[#1A382B] font-bold border border-[#DEE5DC] shadow-xs'
+                      : 'text-[#48544D] hover:text-[#141815] hover:bg-[#F4F5F0] font-medium'
                   )
                 }
               >
@@ -208,7 +208,7 @@ export const MobileDrawer: React.FC = () => {
                     <Icon
                       className={cn(
                         'w-5 h-5 transition-colors',
-                        isActive ? 'text-text-primary' : 'text-text-muted'
+                        isActive ? 'text-[#1A382B]' : 'text-[#6E7A72]'
                       )}
                     />
                     <span className="uppercase tracking-wider text-xs font-bold">
@@ -216,7 +216,7 @@ export const MobileDrawer: React.FC = () => {
                     </span>
                     {isActive && (
                       <span
-                        className="w-2 h-2 rounded-full bg-accent ml-auto shrink-0 shadow-pill"
+                        className="w-2 h-2 rounded-full bg-[#1A382B] ml-auto shrink-0 shadow-xs"
                         aria-hidden="true"
                       />
                     )}
@@ -228,9 +228,9 @@ export const MobileDrawer: React.FC = () => {
         </div>
 
         {/* Quiet Footer */}
-        <div className="p-4 pb-safe border-t border-border flex items-center justify-between text-2xs font-mono text-text-muted mt-auto bg-surface-base">
+        <div className="p-4 pb-safe border-t border-[#E6EAE2] flex items-center justify-between text-2xs font-mono text-[#6E7A72] mt-auto bg-[#F9FAF8]">
           <span>TEMPO 75</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#1A382B]" />
           <span>LOCAL-FIRST</span>
         </div>
       </aside>

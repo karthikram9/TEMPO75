@@ -23,9 +23,9 @@ export const WorkoutCompletion: React.FC<WorkoutCompletionProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="completion-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/25 animate-in fade-in"
     >
-      <div className={`w-full max-w-lg bg-surface-primary border border-border-primary rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col items-center text-center ${className}`}>
+      <div className={`w-full max-w-lg bg-white border border-[#E6EAE2] rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col items-center text-center ${className}`}>
         {/* Celebration Trophy / Flame Badge */}
         <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mb-4">
           <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -88,7 +88,7 @@ export const WorkoutCompletion: React.FC<WorkoutCompletionProps> = ({
         <button
           type="button"
           onClick={onFinish}
-          className="w-full min-h-[54px] rounded-xl bg-accent hover:opacity-90 text-text-primary font-mono font-black text-base uppercase tracking-wider shadow-sm transition-all active:scale-[0.98]"
+          className="w-full min-h-[54px] rounded-full bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] text-white font-mono font-black text-base uppercase tracking-wider shadow-sm transition-all active:scale-[0.98]"
         >
           Finish & Return
         </button>

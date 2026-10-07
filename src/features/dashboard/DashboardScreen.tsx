@@ -162,13 +162,15 @@ export const DashboardScreen: React.FC = () => {
       </div>
 
       {/* Accessible Fast Weight Logger Modal */}
-      <LogWeightModal
-        isOpen={isLogWeightOpen}
-        onClose={() => setIsLogWeightOpen(false)}
-        currentDayNumber={currentDayNumber}
-        initialWeightKg={currentWeightKg ?? 75.0}
-        onSaveWeight={logWeight}
-      />
+      {isLogWeightOpen && (
+        <LogWeightModal
+          isOpen={isLogWeightOpen}
+          onClose={() => setIsLogWeightOpen(false)}
+          currentDayNumber={currentDayNumber}
+          initialWeightKg={currentWeightKg ?? 75.0}
+          onSaveWeight={logWeight}
+        />
+      )}
     </div>
   );
 };

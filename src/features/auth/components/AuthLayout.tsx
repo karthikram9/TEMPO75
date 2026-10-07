@@ -14,7 +14,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
   subtitle,
 }) => {
   return (
-    <div className="min-h-screen min-h-[100dvh] w-full bg-bg-base text-text-primary flex flex-col lg:flex-row overflow-x-hidden selection:bg-accent selection:text-text-primary">
+    <div className="min-h-screen min-h-[100dvh] w-full bg-bg-base text-text-primary flex flex-col lg:flex-row overflow-x-hidden selection:bg-[#1A382B] selection:text-white">
       {/* ---------------------------------------------------- */}
       {/* LEFT / EDITORIAL ATHLETIC SIDE (Desktop Split)       */}
       {/* ---------------------------------------------------- */}

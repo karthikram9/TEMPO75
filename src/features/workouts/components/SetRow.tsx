@@ -94,7 +94,7 @@ export const SetRow: React.FC<SetRowProps> = ({
           <button
             type="button"
             onClick={handleSave}
-            className="px-4 h-9 rounded-full bg-accent text-text-primary font-bold text-xs hover:opacity-95 shadow-pill transition-all"
+            className="px-4 h-9 rounded-full bg-[#1A382B] text-white font-bold text-xs hover:bg-[#234A39] shadow-sm transition-all"
           >
             Save
           </button>

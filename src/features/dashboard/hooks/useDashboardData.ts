@@ -388,11 +388,12 @@ export function useDashboardData() {
       }
 
       try {
+        const roundedWeight = Math.round(weightKg * 10) / 10;
         const newEntry: WeightEntry = {
           id: `weight_${Date.now()}`,
           userId: profile?.id ?? 'athlete-1',
           challengeDayNumber: currentDayNumber,
-          weightKg: Math.round(weightKg * 10) / 10,
+          weightKg: roundedWeight,
           takenAt: new Date().toISOString(),
           isMorningFast,
           notes,
@@ -403,6 +404,14 @@ export function useDashboardData() {
 
         await storage.set(STORAGE_KEYS.BODY_WEIGHT, updated);
         setWeightEntries(updated);
+
+        // Also update profile in memory & storage so profile.weightKg updates immediately
+        if (profile) {
+          const updatedProfile: UserProfile = { ...profile, weightKg: roundedWeight };
+          await storage.set(STORAGE_KEYS.USER_PROFILE, updatedProfile);
+          setProfile(updatedProfile);
+        }
+
         return true;
       } catch (err) {
         console.error('[useDashboardData] Failed to log weight:', err);

@@ -25,11 +25,11 @@ export const ResumeWorkoutDialog: React.FC<ResumeWorkoutDialogProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="resume-dialog-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/25 animate-in fade-in"
     >
-      <div className="w-full max-w-md bg-surface-primary border border-border-primary rounded-3xl p-6 sm:p-7 shadow-2xl flex flex-col items-center text-center">
+      <div className="w-full max-w-md bg-white border border-[#E6EAE2] rounded-3xl p-6 sm:p-7 shadow-2xl flex flex-col items-center text-center">
         {/* Animated Icon */}
-        <div className="w-14 h-14 rounded-2xl bg-accent/20 border border-accent/40 text-text-primary flex items-center justify-center mb-4">
+        <div className="w-14 h-14 rounded-2xl bg-[#EBF0EA] border border-[#DEE5DC] text-[#1A382B] flex items-center justify-center mb-4">
           <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
             <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
@@ -85,7 +85,7 @@ export const ResumeWorkoutDialog: React.FC<ResumeWorkoutDialogProps> = ({
             <button
               type="button"
               onClick={onResume}
-              className="w-full min-h-[52px] rounded-xl bg-accent hover:opacity-90 text-text-primary font-mono font-black text-sm uppercase tracking-wider shadow-sm transition-all active:scale-[0.98]"
+              className="w-full min-h-[52px] rounded-full bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] text-white font-mono font-black text-sm uppercase tracking-wider shadow-sm transition-all active:scale-[0.98]"
             >
               Resume Workout
             </button>
