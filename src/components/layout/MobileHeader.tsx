@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Menu } from 'lucide-react';
 import type { MobileHeaderConfig } from './headerContextDef';
-import { useMobileHeader } from '@/hooks';
-
+import { useMobileHeader, useNavigationDrawer } from '@/hooks';
 import { TempoBrandmark } from '@/features/auth/components/TempoBrandmark';
 
 export interface MobileHeaderProps extends MobileHeaderConfig {
   className?: string;
+  onMenuClick?: () => void;
+  isMenuOpen?: boolean;
 }
 
 export const MobileHeader: React.FC<MobileHeaderProps> = ({
@@ -18,8 +19,11 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({
   rightAction: propRightAction,
   badge: propBadge,
   className,
+  onMenuClick,
+  isMenuOpen,
 }) => {
   const { headerConfig } = useMobileHeader();
+  const { isDrawerOpen, toggleDrawer } = useNavigationDrawer();
   const navigate = useNavigate();
 
   const title = propTitle ?? headerConfig.title ?? 'TEMPO 75';
@@ -28,6 +32,9 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({
   const onBack = propOnBack ?? headerConfig.onBack;
   const rightAction = propRightAction ?? headerConfig.rightAction;
   const badge = propBadge ?? headerConfig.badge;
+
+  const menuOpen = isMenuOpen ?? isDrawerOpen;
+  const handleMenuClick = onMenuClick ?? toggleDrawer;
 
   const handleBack = () => {
     if (onBack) {
@@ -46,18 +53,36 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({
       }`}
     >
       <div className="flex items-center justify-between h-14 px-4 gap-2">
-        {/* Left Section: Back button or Brand logo */}
-        <div className="flex items-center gap-2.5 min-w-[44px]">
-          {showBack ? (
+        {/* Left Section: Compact Top-Left Menu Button, Back button, Brand logo, and Title */}
+        <div className="flex items-center gap-1.5 min-w-0">
+          {/* Top-Left Menu Button */}
+          <button
+            type="button"
+            onClick={handleMenuClick}
+            className="w-11 h-11 -ml-1.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-text-primary hover:bg-surface-subtle active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation-drawer"
+            data-testid="mobile-menu-button"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+
+          {/* Contextual Back Button */}
+          {showBack && (
             <button
               type="button"
               onClick={handleBack}
-              className="w-11 h-11 -ml-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-text-secondary hover:text-text-primary active:scale-95 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="w-11 h-11 -ml-1 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-text-secondary hover:text-text-primary active:scale-95 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               aria-label="Go back"
+              data-testid="mobile-back-button"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-          ) : isDefaultBrand ? (
+          )}
+
+          {/* Brand Logo when no back button and default brand title */}
+          {!showBack && isDefaultBrand && (
             <NavLink
               to="/"
               className="flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg"
@@ -65,10 +90,10 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({
             >
               <TempoBrandmark size="sm" variant="lime" showIconOnly />
             </NavLink>
-          ) : null}
+          )}
 
           {/* Title Hierarchy */}
-          <div className="flex flex-col justify-center truncate">
+          <div className="flex flex-col justify-center truncate ml-0.5">
             <h1 className="font-extrabold tracking-tight text-sm sm:text-base text-text-primary leading-tight truncate">
               {title}
             </h1>
@@ -92,3 +117,4 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({
     </header>
   );
 };
+

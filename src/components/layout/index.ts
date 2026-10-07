@@ -3,7 +3,7 @@ export * from './MobileHeader';
 export * from './headerContextDef';
 export * from './HeaderContext';
 export * from './DesktopSidebar';
-export * from './BottomNavigation';
+export * from './MobileDrawer';
 export * from './PageContainer';
 export * from './Section';
 export * from './RoutePlaceholder';

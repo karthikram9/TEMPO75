@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { HeaderProvider } from './HeaderContext';
 import { MobileHeader } from './MobileHeader';
-import { BottomNavigation } from './BottomNavigation';
+import { MobileDrawer } from './MobileDrawer';
 import { DesktopSidebar } from './DesktopSidebar';
 
 export const AppShell: React.FC = () => {
@@ -13,6 +13,9 @@ export const AppShell: React.FC = () => {
       <div className="min-h-screen w-full flex bg-background text-text-primary antialiased selection:bg-accent selection:text-text-primary">
         {/* Desktop Sidebar (hidden on <1024px, fixed width on >=1024px) */}
         <DesktopSidebar />
+
+        {/* Mobile/Tablet Collapsible Left Drawer (active on <1024px) */}
+        <MobileDrawer />
 
         {/* Content Column */}
         <div className="flex-1 flex flex-col min-w-0">
@@ -25,9 +28,6 @@ export const AppShell: React.FC = () => {
           <main className="flex-1 w-full" key={location.pathname}>
             <Outlet />
           </main>
-
-          {/* Mobile Bottom Navigation (hidden on desktop >=768px) */}
-          <BottomNavigation />
         </div>
       </div>
     </HeaderProvider>

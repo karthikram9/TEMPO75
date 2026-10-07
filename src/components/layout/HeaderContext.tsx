@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useMemo, useRef } from 'react';
+import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   HeaderContext,
   defaultHeaderConfig,
@@ -25,6 +26,45 @@ export const HeaderProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [headerConfig, setHeaderConfigState] = useState<MobileHeaderConfig>(defaultHeaderConfig);
   const currentConfigRef = useRef<MobileHeaderConfig>(defaultHeaderConfig);
   const onBackCallbackRef = useRef<(() => void) | undefined>(undefined);
+
+  // Mobile Drawer State
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const openDrawer = useCallback(() => setIsDrawerOpen(true), []);
+  const closeDrawer = useCallback(() => setIsDrawerOpen(false), []);
+  const toggleDrawer = useCallback(() => setIsDrawerOpen((prev) => !prev), []);
+
+  const location = useLocation();
+  const [prevPathname, setPrevPathname] = useState(location.pathname);
+
+  // Close drawer automatically whenever route changes (React recommended pattern)
+  if (prevPathname !== location.pathname) {
+    setPrevPathname(location.pathname);
+    setIsDrawerOpen(false);
+  }
+
+  // Close drawer if window is resized to desktop width (>= 1024px)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsDrawerOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Close drawer on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isDrawerOpen) {
+        setIsDrawerOpen(false);
+      }
+    };
+    if (isDrawerOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [isDrawerOpen]);
 
   const stableOnBack = useCallback(() => {
     if (onBackCallbackRef.current) {
@@ -76,8 +116,20 @@ export const HeaderProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       headerConfig,
       setHeaderConfig,
       resetHeaderConfig,
+      isDrawerOpen,
+      openDrawer,
+      closeDrawer,
+      toggleDrawer,
     }),
-    [headerConfig, setHeaderConfig, resetHeaderConfig]
+    [
+      headerConfig,
+      setHeaderConfig,
+      resetHeaderConfig,
+      isDrawerOpen,
+      openDrawer,
+      closeDrawer,
+      toggleDrawer,
+    ]
   );
 
   return <HeaderContext.Provider value={value}>{children}</HeaderContext.Provider>;

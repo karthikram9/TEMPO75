@@ -25,9 +25,9 @@ export const PageContainer: React.FC<PageContainerProps> = ({
       className={cn(
         // Responsive horizontal padding: 16px mobile, 24px tablet, 32px desktop
         'w-full mx-auto px-4 sm:px-6 lg:px-8',
-        // Responsive vertical rhythm with bottom safe clearance for mobile navigation bar
+        // Responsive vertical rhythm with comfortable bottom safe clearance
         'py-4 sm:py-6 lg:py-8',
-        'pb-28 sm:pb-32 lg:pb-12',
+        'pb-12 pb-safe sm:pb-16 lg:pb-12',
         // Strict boundary to prevent horizontal overflow
         'overflow-x-hidden',
         maxWidthStyles[maxWidth],
