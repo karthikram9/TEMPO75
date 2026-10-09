@@ -24,7 +24,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({ exercise, index, rec
         <div className="flex items-start justify-between gap-3 mb-2.5">
           <div className="flex items-center gap-2.5">
             <span
-              className="text-xs font-mono font-black tracking-wider text-text-primary bg-accent/25 px-2.5 py-0.5 rounded-full border border-accent/40"
+              className="text-xs font-mono font-black tracking-wider text-white bg-[#1A382B] px-2.5 py-0.5 rounded-full shadow-xs"
               aria-label={`Exercise number ${exercise.order}`}
             >
               {orderPadded}
@@ -57,39 +57,39 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({ exercise, index, rec
         {/* Core Prescription Badges: Sets, Reps, Rest */}
         <div className="grid grid-cols-3 gap-2 mb-3.5">
           <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-surface-subtle/70 border border-border-subtle/60 text-center">
-            <span className="text-[10px] uppercase font-bold text-text-tertiary tracking-wider">Sets</span>
+            <span className="text-[10px] uppercase font-bold text-[#6E7A72] tracking-wider">Sets</span>
             <span className="text-sm sm:text-base font-extrabold text-text-primary font-mono mt-0.5">
               {exercise.targetSets}
             </span>
           </div>
 
           <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-surface-subtle/70 border border-border-subtle/60 text-center">
-            <span className="text-[10px] uppercase font-bold text-text-tertiary tracking-wider">Reps</span>
+            <span className="text-[10px] uppercase font-bold text-[#6E7A72] tracking-wider">Reps</span>
             <span className="text-sm sm:text-base font-extrabold text-text-primary font-mono mt-0.5">
               {repRangeLabel}
             </span>
           </div>
 
           <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-surface-subtle/70 border border-border-subtle/60 text-center">
-            <span className="text-[10px] uppercase font-bold text-text-tertiary tracking-wider">Rest</span>
+            <span className="text-[10px] uppercase font-bold text-[#6E7A72] tracking-wider">Rest</span>
             <RestBadge seconds={exercise.restSeconds} className="mt-0.5 !border-0 !bg-transparent !p-0 !text-xs !font-bold text-text-primary font-mono" />
           </div>
         </div>
 
         {/* Short Instruction Cue */}
         {primaryInstruction && (
-          <p className="text-xs text-text-secondary leading-relaxed pl-3 border-l-2 border-accent mb-3 italic">
+          <p className="text-xs text-text-secondary leading-relaxed pl-3 border-l-2 border-[#1A382B] mb-3 italic">
             &ldquo;{primaryInstruction}&rdquo;
           </p>
         )}
 
         {/* Advisory Next Target Chip if history exists */}
         {recommendation && (
-          <div className="mb-3 p-3 rounded-2xl bg-surface-subtle border border-border-subtle flex items-center justify-between text-xs font-mono">
-            <span className="text-text-primary font-bold text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-accent/25 border border-accent/40">
+          <div className="mb-3 p-3 rounded-2xl bg-[#EDF0EA] border border-[#DEE5DC] flex items-center justify-between text-xs font-mono">
+            <span className="text-[#1A382B] font-bold text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-white border border-[#DEE5DC]">
               NEXT TARGET
             </span>
-            <span className="text-text-primary font-bold">
+            <span className="text-[#141815] font-bold">
               {recommendation.targetLabel}
             </span>
           </div>
@@ -97,12 +97,12 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({ exercise, index, rec
       </div>
 
       {/* Logging Status Notice */}
-      <div className="pt-2.5 mt-1 border-t border-border-subtle/60 flex items-center justify-between text-[11px] text-text-tertiary">
+      <div className="pt-2.5 mt-1 border-t border-border-subtle/60 flex items-center justify-between text-[11px] text-[#6E7A72]">
         <span className="inline-flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" aria-hidden="true" />
           <span className="font-medium text-text-secondary">Prescription view</span>
         </span>
-        <span className="font-mono text-text-tertiary">Ready to track in workout logger</span>
+        <span className="font-mono text-[#6E7A72]">Ready to track in workout logger</span>
       </div>
     </article>
   );

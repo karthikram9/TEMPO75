@@ -14,23 +14,23 @@ export const PreviousPerformance: React.FC<PreviousPerformanceProps> = ({
 
   return (
     <div
-      className={`flex items-center gap-2 p-2.5 rounded-xl bg-surface-secondary border border-border-primary/60 text-xs ${className}`}
+      className={`flex items-center gap-2 p-2.5 rounded-xl bg-[#EDF0EA] border border-[#DEE5DC] text-xs ${className}`}
       aria-label="Previous Performance Records"
     >
-      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-text-tertiary shrink-0">
+      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#6E7A72] shrink-0">
         LAST TIME
       </span>
 
-      <span className="text-border-primary">•</span>
+      <span className="text-[#DEE5DC]">•</span>
 
       {completedSets.length > 0 ? (
-        <div className="flex flex-wrap items-center gap-2 overflow-x-auto font-mono text-text-primary">
+        <div className="flex flex-wrap items-center gap-2 overflow-x-auto font-mono text-[#141815]">
           {completedSets.map((s, idx) => {
             const weightLabel = s.weightKg && s.weightKg > 0 ? `${s.weightKg} kg` : 'BW';
             return (
               <span
                 key={s.id ?? idx}
-                className="inline-flex items-center px-2 py-0.5 rounded-lg bg-surface-primary border border-border-secondary text-[11px] font-semibold text-text-primary shadow-xs"
+                className="inline-flex items-center px-2 py-0.5 rounded-lg bg-white border border-[#DEE5DC] text-[11px] font-black text-[#141815] shadow-xs"
               >
                 {weightLabel} × {s.reps}
               </span>
@@ -38,7 +38,7 @@ export const PreviousPerformance: React.FC<PreviousPerformanceProps> = ({
           })}
         </div>
       ) : (
-        <span className="text-text-tertiary italic text-[11px]">
+        <span className="text-[#6E7A72] italic text-[11px]">
           No previous record
         </span>
       )}

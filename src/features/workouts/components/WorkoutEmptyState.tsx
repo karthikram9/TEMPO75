@@ -26,16 +26,16 @@ export const WorkoutEmptyState: React.FC<WorkoutEmptyStateProps> = ({
 
   return (
     <article
-      className={`w-full bg-surface-primary border border-border-primary rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center shadow-sm ${className}`}
+      className={`w-full bg-white border border-[#E6EAE2] rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center shadow-daylight ${className}`}
       aria-labelledby="recovery-day-heading"
     >
       {/* Protocol Badge */}
       <div className="flex items-center gap-2 mb-3">
-        <span className="text-xs font-mono font-bold tracking-wider text-text-tertiary uppercase">
+        <span className="text-xs font-mono font-bold tracking-wider text-[#6E7A72] uppercase">
           TEMPO 75
         </span>
-        <span className="text-border-primary">•</span>
-        <span className="text-xs font-mono font-bold tracking-wider text-text-primary">
+        <span className="text-[#DEE5DC]">•</span>
+        <span className="text-xs font-mono font-bold tracking-wider text-[#141815]">
           DAY {dayNumberPadded} / {totalDaysPadded}
         </span>
       </div>
@@ -59,51 +59,51 @@ export const WorkoutEmptyState: React.FC<WorkoutEmptyStateProps> = ({
 
       <h1
         id="recovery-day-heading"
-        className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-text-primary mb-2"
+        className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#141815] mb-2"
       >
         Recovery Day
       </h1>
 
-      <p className="text-sm text-text-secondary max-w-md mb-6 leading-relaxed">
+      <p className="text-sm text-[#48544D] max-w-md mb-6 leading-relaxed">
         Today is scheduled recovery. No resistance session prescribed. Focus on tissue adaptation, mobility, and replenishment.
       </p>
 
       {/* Target Metrics */}
       <div className="w-full max-w-lg grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-        <div className="p-4 rounded-2xl bg-surface-secondary border border-border-primary flex flex-col items-center">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-text-tertiary mb-1">
+        <div className="p-4 rounded-2xl bg-[#EDF0EA] border border-[#DEE5DC] flex flex-col items-center">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-[#6E7A72] mb-1">
             Sleep Target
           </span>
           <span className="text-lg font-bold font-mono text-sky-700">
             {sleepHours} hrs
           </span>
-          <span className="text-[11px] text-text-tertiary mt-0.5">Prioritize rest</span>
+          <span className="text-[11px] text-[#6E7A72] mt-0.5">Prioritize rest</span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-surface-secondary border border-border-primary flex flex-col items-center">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-text-tertiary mb-1">
+        <div className="p-4 rounded-2xl bg-[#EDF0EA] border border-[#DEE5DC] flex flex-col items-center">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-[#6E7A72] mb-1">
             Step Target
           </span>
-          <span className="text-lg font-bold font-mono text-text-primary">
+          <span className="text-lg font-black font-mono text-[#141815]">
             {stepTarget.toLocaleString()}
           </span>
-          <span className="text-[11px] text-text-tertiary mt-0.5">Low-intensity activity</span>
+          <span className="text-[11px] text-[#6E7A72] mt-0.5">Low-intensity activity</span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-surface-secondary border border-border-primary flex flex-col items-center">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-text-tertiary mb-1">
+        <div className="p-4 rounded-2xl bg-[#EDF0EA] border border-[#DEE5DC] flex flex-col items-center">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-[#6E7A72] mb-1">
             Active Recovery
           </span>
-          <span className="text-lg font-bold font-mono text-text-primary capitalize">
+          <span className="text-lg font-black font-mono text-[#141815] capitalize">
             {cardioPref === 'none' ? 'Rest' : cardioPref}
           </span>
-          <span className="text-[11px] text-text-tertiary mt-0.5">
+          <span className="text-[11px] text-[#6E7A72] mt-0.5">
             {cardioPref === 'none' ? 'Zero impact' : `${cardioDuration} min optional`}
           </span>
         </div>
       </div>
 
-      <div className="text-xs text-text-tertiary font-mono">
+      <div className="text-xs text-[#6E7A72] font-mono">
         Consistency includes recovery. Your next resistance session unlocks tomorrow.
       </div>
     </article>

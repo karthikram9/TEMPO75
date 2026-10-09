@@ -17,35 +17,35 @@ export const ProgressionTarget: React.FC<ProgressionTargetProps> = ({
   const statusConfig = {
     progress: {
       label: '↑ PROGRESS',
-      badgeClass: 'bg-accent text-text-primary border-transparent font-black',
-      borderClass: 'border-border-primary',
-      bgClass: 'bg-surface-secondary',
+      badgeClass: 'bg-[#1A382B] text-white border-transparent font-black',
+      borderClass: 'border-[#DEE5DC]',
+      bgClass: 'bg-[#EDF0EA]',
     },
     maintain: {
       label: '→ MAINTAIN',
-      badgeClass: 'bg-surface-tertiary text-text-primary border-border-secondary font-bold',
-      borderClass: 'border-border-primary',
-      bgClass: 'bg-surface-secondary',
+      badgeClass: 'bg-white text-[#141815] border border-[#CCD5CA] font-bold',
+      borderClass: 'border-[#E6EAE2]',
+      bgClass: 'bg-[#F9FAF8]',
     },
     reduce: {
       label: '↓ REDUCE',
-      badgeClass: 'bg-amber-100 text-amber-800 border-amber-200 font-bold',
-      borderClass: 'border-border-primary',
-      bgClass: 'bg-surface-secondary',
+      badgeClass: 'bg-amber-100 text-amber-900 border-amber-200 font-bold',
+      borderClass: 'border-amber-200',
+      bgClass: 'bg-amber-50/40',
     },
     new: {
       label: '✦ BASELINE',
-      badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200 font-bold',
-      borderClass: 'border-border-primary',
-      bgClass: 'bg-surface-secondary',
+      badgeClass: 'bg-[#1A382B] text-white border-transparent font-bold',
+      borderClass: 'border-[#DEE5DC]',
+      bgClass: 'bg-[#EDF0EA]',
     },
   }[status];
 
   // Confidence tag styles
   const confidenceConfig = {
-    high: 'text-emerald-700 bg-emerald-50 border-emerald-200',
-    medium: 'text-sky-700 bg-sky-50 border-sky-200',
-    low: 'text-text-tertiary bg-surface-tertiary border-border-secondary',
+    high: 'text-[#1A382B] bg-[#EDF0EA] border-[#DEE5DC]',
+    medium: 'text-sky-800 bg-sky-50 border-sky-200',
+    low: 'text-[#6E7A72] bg-[#EDF0EA] border-[#DEE5DC]',
   }[confidence];
 
   const formatted1RM = formatEstimated1RM(estimated1RMKg);
@@ -58,8 +58,8 @@ export const ProgressionTarget: React.FC<ProgressionTargetProps> = ({
       {/* Top Header Row: NEXT TARGET label + Status Badge + Confidence */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <span className="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-text-secondary shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent ring-2 ring-accent/30" />
+          <span className="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#48544D] shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1A382B]" />
             NEXT TARGET
           </span>
           <span
@@ -72,7 +72,7 @@ export const ProgressionTarget: React.FC<ProgressionTargetProps> = ({
         <div className="flex items-center gap-1.5 shrink-0">
           {formatted1RM && (
             <span
-              className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono text-text-secondary bg-surface-primary border border-border-secondary"
+              className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono text-[#48544D] bg-white border border-[#DEE5DC]"
               title="Estimated 1-Rep Max based on recent compound performance"
             >
               {formatted1RM}
@@ -89,13 +89,13 @@ export const ProgressionTarget: React.FC<ProgressionTargetProps> = ({
 
       {/* Target Metric Readout */}
       <div className="flex items-baseline gap-2 pt-0.5">
-        <span className="font-mono text-sm sm:text-base font-extrabold tracking-tight text-text-primary">
+        <span className="font-mono text-sm sm:text-base font-black tracking-tight text-[#141815]">
           {targetLabel}
         </span>
       </div>
 
       {/* Explanation Cue */}
-      <p className="text-xs text-text-secondary leading-normal border-t border-border-secondary pt-1.5 mt-0.5">
+      <p className="text-xs text-[#48544D] leading-normal border-t border-[#DEE5DC] pt-1.5 mt-0.5">
         {explanation}
       </p>
     </div>

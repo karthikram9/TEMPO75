@@ -28,27 +28,27 @@ export const WorkoutHeader: React.FC<WorkoutHeaderProps> = ({
   const statusConfig = {
     active: {
       label: 'ACTIVE PROTOCOL',
-      classes: 'bg-accent/25 border-accent/40 text-text-primary font-bold',
+      classes: 'bg-[#EDF0EA] border border-[#DEE5DC] text-[#1A382B] font-bold',
     },
     upcoming: {
       label: 'UPCOMING (VIEW-ONLY)',
-      classes: 'bg-surface-subtle border-border-subtle text-text-tertiary font-medium',
+      classes: 'bg-[#EDF0EA] border border-[#DEE5DC] text-[#6E7A72] font-medium',
     },
     completed: {
       label: 'COMPLETED',
-      classes: 'bg-emerald-50 border-emerald-200 text-emerald-800 font-bold',
+      classes: 'bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold',
     },
     missed: {
       label: 'PAST DAY',
-      classes: 'bg-rose-50 border-rose-200 text-rose-800 font-medium',
+      classes: 'bg-rose-50 border border-rose-200 text-rose-800 font-medium',
     },
     rest: {
       label: 'RECOVERY DAY',
-      classes: 'bg-blue-50 border-blue-200 text-blue-800 font-bold',
+      classes: 'bg-blue-50 border border-blue-200 text-blue-800 font-bold',
     },
   }[status] ?? {
     label: status.toUpperCase(),
-    classes: 'bg-surface-subtle border-border-subtle text-text-tertiary font-medium',
+    classes: 'bg-[#EDF0EA] border border-[#DEE5DC] text-[#6E7A72] font-medium',
   };
 
   return (
@@ -56,30 +56,30 @@ export const WorkoutHeader: React.FC<WorkoutHeaderProps> = ({
       {/* Top Protocol Status Row */}
       <div className="flex items-center justify-between gap-2 mb-2">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-mono font-bold tracking-wider text-text-tertiary uppercase">
+          <span className="text-xs font-mono font-bold tracking-wider text-[#6E7A72] uppercase">
             TEMPO 75
           </span>
-          <span className="text-border-subtle">•</span>
-          <span className="text-xs font-mono font-bold tracking-wider text-text-primary">
+          <span className="text-[#DEE5DC]">•</span>
+          <span className="text-xs font-mono font-bold tracking-wider text-[#141815]">
             DAY {dayNumberPadded} / {totalDaysPadded}
           </span>
         </div>
 
         <span
-          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider border font-mono ${statusConfig.classes}`}
+          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-mono ${statusConfig.classes}`}
         >
           {statusConfig.label}
         </span>
       </div>
 
       {/* Main Workout Name */}
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-text-primary mb-2">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-[#141815] mb-2">
         {workoutName}
       </h1>
 
       {/* Training Focus & Targeted Muscle Group Badges */}
       <div className="flex flex-wrap items-center gap-2 pt-1">
-        <span className="text-xs sm:text-sm font-semibold text-text-secondary tracking-wide uppercase">
+        <span className="text-xs sm:text-sm font-semibold text-[#48544D] tracking-wide uppercase">
           {focus}
         </span>
 

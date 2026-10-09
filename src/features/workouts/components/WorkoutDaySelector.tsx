@@ -38,7 +38,7 @@ export const WorkoutDaySelector: React.FC<WorkoutDaySelectorProps> = ({
       className={`w-full flex flex-col gap-2 ${className}`}
     >
       <div className="flex items-center justify-between px-1">
-        <span className="text-[11px] font-mono uppercase tracking-wider text-text-tertiary font-bold">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-[#6E7A72] font-bold">
           Day Schedule
         </span>
 
@@ -46,7 +46,7 @@ export const WorkoutDaySelector: React.FC<WorkoutDaySelectorProps> = ({
           <button
             type="button"
             onClick={() => onSelectDay(activeDayNumber)}
-            className="text-xs font-mono font-bold text-text-primary hover:opacity-90 transition-all flex items-center gap-1.5 min-h-[32px] px-3 py-1 rounded-full bg-accent/25 border border-accent/40 active:scale-95 shadow-sm"
+            className="text-xs font-mono font-bold text-[#1A382B] hover:opacity-90 transition-all flex items-center gap-1.5 min-h-[32px] px-3 py-1 rounded-full bg-[#EDF0EA] border border-[#DEE5DC] active:scale-95 shadow-sm"
           >
             <span>Jump to Today (Day {activeDayNumber})</span>
             <span aria-hidden="true">&rarr;</span>
@@ -109,12 +109,12 @@ export const WorkoutDaySelector: React.FC<WorkoutDaySelectorProps> = ({
               <span
                 className={`text-[9px] font-bold tracking-wider uppercase mt-0.5 ${
                   isSelected
-                    ? 'text-text-primary/80 font-black'
+                    ? 'text-white/90 font-bold'
                     : isActive
                     ? 'text-text-primary font-bold'
                     : isRest
                     ? 'text-blue-700'
-                    : 'text-text-tertiary'
+                    : 'text-[#6E7A72]'
                 }`}
               >
                 {statusBadgeText}

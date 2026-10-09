@@ -45,9 +45,9 @@ export const SetRow: React.FC<SetRowProps> = ({
   if (isEditing) {
     return (
       <div
-        className={`flex flex-wrap items-center justify-between gap-2 p-3 rounded-2xl bg-surface-subtle border border-border-subtle shadow-sm ${className}`}
+        className={`flex flex-wrap items-center justify-between gap-2 p-3 rounded-2xl bg-[#EDF0EA] border border-[#DEE5DC] shadow-sm ${className}`}
       >
-        <span className="text-xs font-mono font-bold text-text-primary">
+        <span className="text-xs font-mono font-bold text-[#141815]">
           SET {set.setNumber ?? index + 1}
         </span>
 
@@ -58,11 +58,12 @@ export const SetRow: React.FC<SetRowProps> = ({
               inputMode="decimal"
               value={editWeight}
               onChange={(e) => setEditWeight(e.target.value)}
-              className="w-16 h-9 text-center bg-white border border-border-subtle rounded-xl text-sm text-text-primary font-mono focus:border-text-primary focus:outline-none"
+              className="w-16 h-9 text-center bg-white border border-[#CCD5CA] rounded-xl text-sm text-[#141815] font-mono font-bold focus:border-[#1A382B] focus:outline-none"
+              style={{ color: '#141815', WebkitTextFillColor: '#141815' }}
               placeholder="kg"
               aria-label="Edit Weight"
             />
-            <span className="text-xs text-text-tertiary">kg</span>
+            <span className="text-xs text-[#6E7A72]">kg</span>
           </div>
 
           <div className="flex items-center gap-1">
@@ -71,11 +72,12 @@ export const SetRow: React.FC<SetRowProps> = ({
               inputMode="numeric"
               value={editReps}
               onChange={(e) => setEditReps(e.target.value)}
-              className="w-14 h-9 text-center bg-white border border-border-subtle rounded-xl text-sm text-text-primary font-mono focus:border-text-primary focus:outline-none"
+              className="w-14 h-9 text-center bg-white border border-[#CCD5CA] rounded-xl text-sm text-[#141815] font-mono font-bold focus:border-[#1A382B] focus:outline-none"
+              style={{ color: '#141815', WebkitTextFillColor: '#141815' }}
               placeholder="reps"
               aria-label="Edit Reps"
             />
-            <span className="text-xs text-text-tertiary">reps</span>
+            <span className="text-xs text-[#6E7A72]">reps</span>
           </div>
 
           <div className="flex items-center gap-1">
@@ -84,11 +86,12 @@ export const SetRow: React.FC<SetRowProps> = ({
               inputMode="numeric"
               value={editRir}
               onChange={(e) => setEditRir(e.target.value)}
-              className="w-12 h-9 text-center bg-white border border-border-subtle rounded-xl text-sm text-text-primary font-mono focus:border-text-primary focus:outline-none"
+              className="w-12 h-9 text-center bg-white border border-[#CCD5CA] rounded-xl text-sm text-[#141815] font-mono font-bold focus:border-[#1A382B] focus:outline-none"
+              style={{ color: '#141815', WebkitTextFillColor: '#141815' }}
               placeholder="RIR"
               aria-label="Edit RIR"
             />
-            <span className="text-xs text-text-tertiary">RIR</span>
+            <span className="text-xs text-[#6E7A72]">RIR</span>
           </div>
 
           <button
@@ -101,7 +104,7 @@ export const SetRow: React.FC<SetRowProps> = ({
           <button
             type="button"
             onClick={() => setIsEditing(false)}
-            className="px-3 h-9 rounded-full bg-surface-base text-text-secondary border border-border-subtle text-xs hover:bg-surface-subtle transition-colors"
+            className="px-3 h-9 rounded-full bg-white text-[#48544D] border border-[#DEE5DC] text-xs hover:bg-[#EDF0EA] transition-colors"
           >
             Cancel
           </button>
@@ -112,16 +115,16 @@ export const SetRow: React.FC<SetRowProps> = ({
 
   return (
     <div
-      className={`flex items-center justify-between p-3.5 rounded-2xl bg-surface-base border border-border-subtle shadow-sm transition-colors ${className}`}
+      className={`flex items-center justify-between p-3.5 rounded-2xl bg-white border border-[#E6EAE2] shadow-xs transition-colors ${className}`}
     >
       <div className="flex items-center gap-3">
-        <span className="text-xs font-mono font-bold text-text-tertiary min-w-[48px]">
+        <span className="text-xs font-mono font-bold text-[#6E7A72] min-w-[48px]">
           SET {set.setNumber ?? index + 1}
         </span>
 
-        <span className="text-emerald-700 text-sm font-bold flex items-center gap-1.5">
+        <span className="text-[#1A382B] text-sm font-bold flex items-center gap-1.5">
           <svg
-            className="w-4 h-4 shrink-0 text-emerald-600"
+            className="w-4 h-4 shrink-0 text-[#1A382B]"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -129,13 +132,13 @@ export const SetRow: React.FC<SetRowProps> = ({
           >
             <polyline points="20 6 9 17 4 12" />
           </svg>
-          <span className="font-mono text-text-primary text-sm font-bold">
+          <span className="font-mono text-[#141815] text-sm sm:text-base font-black">
             {weightLabel} × {set.reps}
           </span>
         </span>
 
         {set.rir !== undefined && (
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-surface-subtle border border-border-subtle text-text-secondary font-semibold">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#EDF0EA] border border-[#DEE5DC] text-[#1A382B] font-bold">
             RIR {set.rir}
           </span>
         )}
@@ -145,7 +148,7 @@ export const SetRow: React.FC<SetRowProps> = ({
         <button
           type="button"
           onClick={() => setIsEditing(true)}
-          className="text-xs text-text-tertiary hover:text-text-primary transition-colors min-h-[36px] px-3 py-1 rounded-full hover:bg-surface-subtle font-mono font-bold"
+          className="text-xs text-[#6E7A72] hover:text-[#141815] transition-colors min-h-[36px] px-3 py-1 rounded-full hover:bg-[#EDF0EA] font-mono font-bold"
           aria-label={`Edit set ${set.setNumber}`}
         >
           Edit

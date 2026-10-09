@@ -24,28 +24,28 @@ export const WorkoutSummary: React.FC<WorkoutSummaryProps> = ({
       {/* 3 Metric Pills */}
       <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
         <div className="flex flex-col p-3.5 rounded-2xl bg-surface-base border border-border-subtle shadow-daylight">
-          <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-text-tertiary">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6E7A72]">
             Estimated Time
           </span>
-          <span className="text-base sm:text-lg font-extrabold font-mono text-text-primary mt-0.5">
+          <span className="text-base sm:text-lg font-black font-mono text-text-primary mt-0.5">
             {durationText}
           </span>
         </div>
 
         <div className="flex flex-col p-3.5 rounded-2xl bg-surface-base border border-border-subtle shadow-daylight">
-          <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-text-tertiary">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6E7A72]">
             Movements
           </span>
-          <span className="text-base sm:text-lg font-extrabold font-mono text-text-primary mt-0.5">
+          <span className="text-base sm:text-lg font-black font-mono text-text-primary mt-0.5">
             {exerciseCount} exercises
           </span>
         </div>
 
         <div className="flex flex-col p-3.5 rounded-2xl bg-surface-base border border-border-subtle shadow-daylight">
-          <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-text-tertiary">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6E7A72]">
             Total Volume
           </span>
-          <span className="text-base sm:text-lg font-extrabold font-mono text-text-primary mt-0.5">
+          <span className="text-base sm:text-lg font-black font-mono text-text-primary mt-0.5">
             {totalSets} sets
           </span>
         </div>

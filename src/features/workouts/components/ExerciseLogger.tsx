@@ -65,7 +65,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
   return (
     <article
       aria-labelledby="active-exercise-title"
-      className={`w-full flex flex-col gap-4 bg-surface-primary border border-border-primary rounded-3xl p-4 sm:p-6 shadow-sm ${className}`}
+      className={`w-full flex flex-col gap-4 bg-white border border-[#E6EAE2] rounded-3xl p-4 sm:p-6 shadow-daylight ${className}`}
     >
       {/* 1. Header with Navigation Arrows and Title */}
       <div className="flex flex-col gap-2">
@@ -74,7 +74,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
             <span className="text-white font-black px-2.5 py-0.5 rounded-full bg-[#1A382B] text-[11px] shadow-xs">
               #{String(exerciseIndex + 1).padStart(2, '0')}
             </span>
-            <span className="text-text-tertiary">
+            <span className="text-[#6E7A72]">
               EXERCISE {exerciseIndex + 1} OF {totalExercises}
             </span>
           </div>
@@ -84,7 +84,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
               type="button"
               onClick={onPrevExercise}
               disabled={exerciseIndex === 0}
-              className="min-h-[36px] px-2.5 py-1 rounded-lg bg-surface-secondary hover:bg-surface-tertiary text-text-secondary disabled:opacity-40 disabled:pointer-events-none text-xs font-mono font-semibold border border-border-primary active:scale-95 transition-colors"
+              className="min-h-[36px] px-2.5 py-1 rounded-lg bg-[#EDF0EA] hover:bg-[#DEE5DC] text-[#141815] disabled:opacity-40 disabled:pointer-events-none text-xs font-mono font-bold border border-[#DEE5DC] active:scale-95 transition-colors"
               aria-label="Previous Exercise"
             >
               &larr; Prev
@@ -93,7 +93,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
               type="button"
               onClick={onNextExercise}
               disabled={exerciseIndex === totalExercises - 1}
-              className="min-h-[36px] px-2.5 py-1 rounded-lg bg-surface-secondary hover:bg-surface-tertiary text-text-secondary disabled:opacity-40 disabled:pointer-events-none text-xs font-mono font-semibold border border-border-primary active:scale-95 transition-colors"
+              className="min-h-[36px] px-2.5 py-1 rounded-lg bg-[#EDF0EA] hover:bg-[#DEE5DC] text-[#141815] disabled:opacity-40 disabled:pointer-events-none text-xs font-mono font-bold border border-[#DEE5DC] active:scale-95 transition-colors"
               aria-label="Next Exercise"
             >
               Next &rarr;
@@ -103,7 +103,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
 
         <h2
           id="active-exercise-title"
-          className="text-xl sm:text-2xl font-black uppercase tracking-tight text-text-primary"
+          className="text-xl sm:text-2xl font-black uppercase tracking-tight text-[#141815]"
         >
           {workoutExercise.name}
         </h2>
@@ -114,13 +114,13 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
             <MuscleTag key={muscle} muscle={muscle} />
           ))}
 
-          <span className="text-text-tertiary">•</span>
+          <span className="text-[#DEE5DC]">•</span>
 
-          <span className="text-xs font-mono font-semibold text-text-secondary">
+          <span className="text-xs font-mono font-bold text-[#48544D]">
             {workoutExercise.targetSets} SETS
           </span>
 
-          <span className="text-xs font-mono font-semibold text-text-secondary">
+          <span className="text-xs font-mono font-bold text-[#48544D]">
             {workoutExercise.prescribedRepRange[0]}–{workoutExercise.prescribedRepRange[1]} REPS
           </span>
 
@@ -129,7 +129,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
 
         {/* Short Cue Instruction */}
         {workoutExercise.instructions?.[0] && (
-          <p className="text-xs text-text-secondary italic pl-2.5 border-l-2 border-accent mt-1">
+          <p className="text-xs text-[#48544D] italic pl-2.5 border-l-2 border-[#1A382B] mt-1">
             &ldquo;{workoutExercise.instructions[0]}&rdquo;
           </p>
         )}
@@ -146,7 +146,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
       {/* 4. Completed Sets History */}
       {completedSets.length > 0 && (
         <div className="flex flex-col gap-2">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-tertiary px-1">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6E7A72] px-1">
             Completed Sets ({completedSets.length} / {workoutExercise.targetSets})
           </span>
           <div className="flex flex-col gap-1.5">
@@ -199,7 +199,7 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
             <button
               type="button"
               onClick={onCompleteWorkout}
-              className="w-full sm:w-auto min-h-[48px] px-6 rounded-xl bg-surface-inverse hover:opacity-90 text-text-inverse font-mono font-black text-sm uppercase tracking-wider transition-colors active:scale-95 shadow-md"
+              className="w-full sm:w-auto min-h-[48px] px-6 rounded-full bg-[#1A382B] hover:bg-[#234A39] text-white font-mono font-black text-sm uppercase tracking-wider transition-colors active:scale-95 shadow-md"
             >
               Finish Workout Session
             </button>
@@ -210,12 +210,12 @@ export const ExerciseLogger: React.FC<ExerciseLoggerProps> = ({
       {/* 5. Pending Future Sets Indicator */}
       {!isExerciseFinished &&
         loggedExercise.sets.length > (nextIncompleteSet?.setNumber ?? 1) && (
-          <div className="flex items-center gap-2 px-1 text-xs text-text-tertiary font-mono">
+          <div className="flex items-center gap-2 px-1 text-xs text-[#6E7A72] font-mono">
             <span>Remaining:</span>
             {loggedExercise.sets
               .filter((s) => !s.completed && s.id !== nextIncompleteSet?.id)
               .map((s) => (
-                <span key={s.id} className="px-2 py-0.5 rounded bg-surface-secondary border border-border-secondary text-text-secondary">
+                <span key={s.id} className="px-2 py-0.5 rounded bg-[#EDF0EA] border border-[#DEE5DC] text-[#48544D] font-bold">
                   Set {s.setNumber}
                 </span>
               ))}

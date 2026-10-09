@@ -10,7 +10,7 @@ interface ExerciseListProps {
 export const ExerciseList: React.FC<ExerciseListProps> = ({ exercises, className = '' }) => {
   if (exercises.length === 0) {
     return (
-      <div className="p-8 text-center bg-surface-primary rounded-2xl border border-border-primary text-text-secondary text-sm">
+      <div className="p-8 text-center bg-white rounded-3xl border border-[#E6EAE2] text-[#48544D] text-sm">
         No exercises scheduled for this workout session.
       </div>
     );
@@ -19,10 +19,10 @@ export const ExerciseList: React.FC<ExerciseListProps> = ({ exercises, className
   return (
     <section aria-label="Prescribed Workout Exercises" className={`w-full ${className}`}>
       <div className="flex items-center justify-between mb-3 px-1">
-        <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-text-tertiary">
+        <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#6E7A72]">
           Movement Sequence ({exercises.length})
         </h2>
-        <span className="text-xs text-text-tertiary font-mono">
+        <span className="text-xs text-[#6E7A72] font-mono">
           Order of Execution
         </span>
       </div>

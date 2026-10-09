@@ -71,18 +71,18 @@ export const SetInput: React.FC<SetInputProps> = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`p-4 sm:p-5 rounded-2xl bg-surface-primary border border-border-primary shadow-sm ${className}`}
+      className={`p-4 sm:p-5 rounded-3xl bg-white border border-[#E6EAE2] shadow-daylight ${className}`}
       aria-label={`Input for Set ${setNumber}`}
     >
       {/* Set Header */}
-      <div className="flex items-center justify-between mb-4 pb-3 border-b border-border-secondary">
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#DEE5DC]">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-accent ring-2 ring-accent/30" aria-hidden="true" />
-          <h4 className="text-sm sm:text-base font-mono font-bold tracking-tight text-text-primary uppercase">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#1A382B]" aria-hidden="true" />
+          <h4 className="text-sm sm:text-base font-mono font-black tracking-tight text-[#141815] uppercase">
             ACTIVE SET {setNumber}
           </h4>
         </div>
-        <span className="text-xs font-mono text-text-tertiary">
+        <span className="text-xs font-mono font-semibold text-[#6E7A72]">
           Target: {targetRepRange[0]}–{targetRepRange[1]} reps
         </span>
       </div>
@@ -93,7 +93,7 @@ export const SetInput: React.FC<SetInputProps> = ({
         <div className="flex flex-col">
           <label
             htmlFor="set-weight-input"
-            className="text-[11px] font-mono font-bold uppercase tracking-wider text-text-secondary mb-1.5"
+            className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#48544D] mb-1.5"
           >
             {isBodyweight ? 'Weight (BW)' : 'Weight (kg)'}
           </label>
@@ -109,10 +109,11 @@ export const SetInput: React.FC<SetInputProps> = ({
                 setValidationError(null);
               }}
               placeholder={isBodyweight ? '0' : '0.0'}
-              className="w-full h-14 pl-3.5 pr-8 bg-surface-secondary border border-border-primary focus:border-border-focus focus:bg-surface-primary rounded-xl text-xl sm:text-2xl font-mono font-bold text-text-primary text-center focus:outline-none transition-colors"
+              className="w-full h-14 pl-3.5 pr-8 bg-white border-2 border-[#CCD5CA] focus:border-[#1A382B] focus:ring-2 focus:ring-[#1A382B]/15 rounded-xl text-xl sm:text-2xl font-mono font-black text-[#141815] caret-[#1A382B] placeholder-[#8A968E] text-center focus:outline-none transition-all shadow-xs"
+              style={{ color: '#141815', WebkitTextFillColor: '#141815' }}
               aria-label="Set Weight in kilograms"
             />
-            <span className="absolute right-3 text-xs font-mono text-text-tertiary pointer-events-none">
+            <span className="absolute right-3 text-xs font-mono font-semibold text-[#6E7A72] pointer-events-none">
               kg
             </span>
           </div>
@@ -122,21 +123,21 @@ export const SetInput: React.FC<SetInputProps> = ({
             <button
               type="button"
               onClick={() => handleWeightAdjust(-2.5)}
-              className="min-h-[36px] px-2.5 py-1 text-xs font-mono font-bold rounded-lg bg-surface-secondary hover:bg-surface-tertiary active:scale-95 text-text-secondary border border-border-primary/60 transition-colors"
+              className="min-h-[36px] px-2.5 py-1 text-xs font-mono font-bold rounded-lg bg-[#EDF0EA] hover:bg-[#DEE5DC] active:bg-[#CCD5CA] active:scale-95 text-[#1A382B] border border-[#DEE5DC] transition-colors"
             >
               -2.5
             </button>
             <button
               type="button"
               onClick={() => handleWeightAdjust(2.5)}
-              className="min-h-[36px] px-2.5 py-1 text-xs font-mono font-bold rounded-lg bg-surface-secondary hover:bg-surface-tertiary active:scale-95 text-text-secondary border border-border-primary/60 transition-colors"
+              className="min-h-[36px] px-2.5 py-1 text-xs font-mono font-bold rounded-lg bg-[#EDF0EA] hover:bg-[#DEE5DC] active:bg-[#CCD5CA] active:scale-95 text-[#1A382B] border border-[#DEE5DC] transition-colors"
             >
               +2.5
             </button>
             <button
               type="button"
               onClick={() => handleWeightAdjust(5)}
-              className="min-h-[36px] px-2.5 py-1 text-xs font-mono font-bold rounded-lg bg-surface-secondary hover:bg-surface-tertiary active:scale-95 text-text-secondary border border-border-primary/60 transition-colors"
+              className="min-h-[36px] px-2.5 py-1 text-xs font-mono font-bold rounded-lg bg-[#EDF0EA] hover:bg-[#DEE5DC] active:bg-[#CCD5CA] active:scale-95 text-[#1A382B] border border-[#DEE5DC] transition-colors"
             >
               +5
             </button>
@@ -147,7 +148,7 @@ export const SetInput: React.FC<SetInputProps> = ({
         <div className="flex flex-col">
           <label
             htmlFor="set-reps-input"
-            className="text-[11px] font-mono font-bold uppercase tracking-wider text-text-secondary mb-1.5"
+            className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#48544D] mb-1.5"
           >
             Completed Reps
           </label>
@@ -163,11 +164,12 @@ export const SetInput: React.FC<SetInputProps> = ({
                 setValidationError(null);
               }}
               placeholder={String(targetRepRange[0])}
-              className="w-full h-14 pl-3.5 pr-8 bg-surface-secondary border border-border-primary focus:border-border-focus focus:bg-surface-primary rounded-xl text-xl sm:text-2xl font-mono font-bold text-text-primary text-center focus:outline-none transition-colors"
+              className="w-full h-14 pl-3.5 pr-8 bg-white border-2 border-[#CCD5CA] focus:border-[#1A382B] focus:ring-2 focus:ring-[#1A382B]/15 rounded-xl text-xl sm:text-2xl font-mono font-black text-[#141815] caret-[#1A382B] placeholder-[#8A968E] text-center focus:outline-none transition-all shadow-xs"
+              style={{ color: '#141815', WebkitTextFillColor: '#141815' }}
               aria-label="Completed repetitions"
               autoFocus
             />
-            <span className="absolute right-3 text-xs font-mono text-text-tertiary pointer-events-none">
+            <span className="absolute right-3 text-xs font-mono font-semibold text-[#6E7A72] pointer-events-none">
               reps
             </span>
           </div>
@@ -177,14 +179,14 @@ export const SetInput: React.FC<SetInputProps> = ({
             <button
               type="button"
               onClick={() => handleRepsAdjust(-1)}
-              className="min-h-[36px] px-3 py-1 text-xs font-mono font-bold rounded-lg bg-surface-secondary hover:bg-surface-tertiary active:scale-95 text-text-secondary border border-border-primary/60 transition-colors"
+              className="min-h-[36px] px-3 py-1 text-xs font-mono font-bold rounded-lg bg-[#EDF0EA] hover:bg-[#DEE5DC] active:bg-[#CCD5CA] active:scale-95 text-[#1A382B] border border-[#DEE5DC] transition-colors"
             >
               -1
             </button>
             <button
               type="button"
               onClick={() => handleRepsAdjust(1)}
-              className="min-h-[36px] px-3 py-1 text-xs font-mono font-bold rounded-lg bg-surface-secondary hover:bg-surface-tertiary active:scale-95 text-text-secondary border border-border-primary/60 transition-colors"
+              className="min-h-[36px] px-3 py-1 text-xs font-mono font-bold rounded-lg bg-[#EDF0EA] hover:bg-[#DEE5DC] active:bg-[#CCD5CA] active:scale-95 text-[#1A382B] border border-[#DEE5DC] transition-colors"
             >
               +1
             </button>
@@ -195,10 +197,10 @@ export const SetInput: React.FC<SetInputProps> = ({
       {/* RIR Selection (Optional Effort Metric) */}
       <div className="mb-4">
         <div className="flex items-center justify-between mb-1.5">
-          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-text-secondary">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#48544D]">
             Reps In Reserve (RIR)
           </span>
-          <span className="text-[10px] text-text-tertiary font-mono">
+          <span className="text-[10px] text-[#6E7A72] font-mono font-medium">
             {selectedRir === 0 ? 'Failure' : `${selectedRir} reps left`}
           </span>
         </div>
@@ -213,10 +215,10 @@ export const SetInput: React.FC<SetInputProps> = ({
                 role="radio"
                 aria-checked={isSelected}
                 onClick={() => setSelectedRir(val)}
-                className={`min-h-[38px] rounded-lg font-mono text-xs font-bold transition-all active:scale-95 ${
+                className={`min-h-[38px] rounded-lg font-mono text-xs transition-all active:scale-95 ${
                   isSelected
-                    ? 'bg-accent text-text-primary font-black shadow-sm border border-transparent'
-                    : 'bg-surface-secondary border border-border-secondary text-text-secondary hover:bg-surface-tertiary hover:text-text-primary'
+                    ? 'bg-[#1A382B] text-white font-black shadow-sm border border-[#1A382B]'
+                    : 'bg-[#EDF0EA] border border-[#DEE5DC] text-[#141815] hover:bg-[#DEE5DC] font-semibold'
                 }`}
               >
                 {val === 4 ? '4+' : val}
@@ -245,10 +247,10 @@ export const SetInput: React.FC<SetInputProps> = ({
       <button
         type="submit"
         disabled={isSaving}
-        className={`w-full min-h-[52px] sm:min-h-[56px] rounded-xl font-mono font-black uppercase tracking-wider text-sm sm:text-base flex items-center justify-center gap-2 transition-all active:scale-[0.98] ${
+        className={`w-full min-h-[52px] sm:min-h-[56px] rounded-full font-mono font-black uppercase tracking-wider text-sm sm:text-base flex items-center justify-center gap-2 transition-all active:scale-[0.98] ${
           isSaving
-            ? 'bg-surface-tertiary text-text-muted cursor-not-allowed'
-            : 'bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] text-white shadow-sm cursor-pointer'
+            ? 'bg-[#EDF0EA] text-[#6E7A72] cursor-not-allowed border border-[#DEE5DC]'
+            : 'bg-[#1A382B] hover:bg-[#234A39] active:bg-[#142C22] text-white shadow-md cursor-pointer'
         }`}
       >
         {isSaving ? (

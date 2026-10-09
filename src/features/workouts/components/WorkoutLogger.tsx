@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import type { Workout, WorkoutSession } from '@/types';
 import { useWorkoutSession } from '../hooks/useWorkoutSession';
 import { useRestTimer } from '../hooks/useRestTimer';
@@ -35,7 +35,7 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
     resumeTimer,
     addTime,
     subtractTime,
-    skipTimer,
+    resetTimer,
   } = useRestTimer();
 
   const {
@@ -69,6 +69,26 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
     },
   });
 
+  const handleDismissRestTimer = useCallback(() => {
+    resetTimer();
+    // Return focus to active set logging inputs
+    requestAnimationFrame(() => {
+      const repsInput = document.getElementById('set-reps-input') as HTMLInputElement | null;
+      const weightInput = document.getElementById('set-weight-input') as HTMLInputElement | null;
+      const targetInput =
+        repsInput && (!repsInput.value || repsInput.value === '') ? repsInput : weightInput || repsInput;
+
+      if (targetInput) {
+        const rect = targetInput.getBoundingClientRect();
+        const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
+        if (!isInViewport) {
+          targetInput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        targetInput.focus();
+      }
+    });
+  }, [resetTimer]);
+
   const handleFinish = () => {
     closeCompletionModal();
     if (session && onWorkoutCompleted) {
@@ -79,7 +99,7 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
   };
 
   return (
-    <div className={`w-full flex flex-col gap-5 sm:gap-6 ${className}`}>
+    <div className={`w-full flex flex-col gap-5 sm:gap-6 pb-28 sm:pb-32 ${className}`}>
       {/* Top Bar: Progress and Exit/Pause Control */}
       <div className="flex flex-col gap-3 p-5 rounded-3xl bg-surface-base border border-border-subtle shadow-daylight">
         <div className="flex items-center justify-between pb-3 border-b border-border-subtle/60">
@@ -91,8 +111,8 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
             <span>&larr; Overview</span>
           </button>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/25 border border-accent/40 text-text-primary text-[11px] font-mono font-bold">
-            <span className="w-2 h-2 rounded-full bg-text-primary animate-pulse" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDF0EA] border border-[#DEE5DC] text-[#1A382B] text-[11px] font-mono font-bold">
+            <span className="w-2 h-2 rounded-full bg-[#1A382B] animate-pulse" aria-hidden="true" />
             <span className="uppercase tracking-wider">
               IN PROGRESS
             </span>
@@ -131,8 +151,8 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
                 isCurrent
                   ? 'bg-[#1A382B] border-transparent text-white font-black shadow-sm'
                   : isDone
-                  ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
-                  : 'bg-surface-base border border-border-subtle text-text-secondary hover:text-text-primary hover:bg-surface-subtle shadow-sm'
+                  ? 'bg-[#EDF0EA] border border-[#DEE5DC] text-[#1A382B] font-bold'
+                  : 'bg-white border border-[#E6EAE2] text-[#6E7A72] hover:text-[#141815] hover:bg-[#EDF0EA] shadow-xs'
               }`}
             >
               <span>{idx + 1}</span>
@@ -186,12 +206,12 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
 
       {/* Complete Workout Action Banner when all required sets are finished */}
       {isAllRequiredSetsCompleted && (
-        <div className="p-5 rounded-3xl bg-emerald-50 border-2 border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-daylight">
+        <div className="p-5 rounded-3xl bg-[#EDF0EA] border border-[#DEE5DC] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-daylight">
           <div>
-            <h4 className="text-sm font-bold font-mono text-emerald-900 uppercase">
+            <h4 className="text-sm font-bold font-mono text-[#1A382B] uppercase">
               All Required Sets Completed ({completedSetsCount} / {totalPrescribedSets})
             </h4>
-            <p className="text-xs text-emerald-700 mt-0.5">
+            <p className="text-xs text-[#48544D] mt-0.5">
               Ready to finalize today&apos;s protocol record.
             </p>
           </div>
@@ -199,14 +219,14 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
           <button
             type="button"
             onClick={completeWorkout}
-            className="w-full sm:w-auto min-h-[50px] px-8 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm uppercase tracking-wider font-mono shadow-md transition-all active:scale-95 touch-manipulation"
+            className="w-full sm:w-auto min-h-[50px] px-8 rounded-full bg-[#1A382B] hover:bg-[#234A39] text-white font-black text-sm uppercase tracking-wider font-mono shadow-md transition-all active:scale-95 touch-manipulation cursor-pointer"
           >
             Complete Workout
           </button>
         </div>
       )}
 
-      {/* Sticky Drift-Free Rest Timer */}
+      {/* Sticky Drift-Free Circular Rest Timer */}
       <RestTimer
         timerState={timerState}
         formattedRemaining={formattedRemaining}
@@ -215,7 +235,8 @@ export const WorkoutLogger: React.FC<WorkoutLoggerProps> = ({
         onResume={resumeTimer}
         onAddTime={() => addTime(15)}
         onSubtractTime={() => subtractTime(15)}
-        onSkip={skipTimer}
+        onSkip={handleDismissRestTimer}
+        onReady={handleDismissRestTimer}
       />
 
       {/* Workout Completion Modal */}

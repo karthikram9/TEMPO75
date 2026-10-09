@@ -391,7 +391,7 @@ export const WorkoutScreen: React.FC = () => {
 
           {/* Primary Action Button: START WORKOUT / RESUME WORKOUT */}
           {!isSelectedDayCompleted && (
-            <div className="sticky top-16 z-30 py-2 bg-bg-base/90 backdrop-blur-md">
+            <div className="sticky top-16 z-30 py-2 bg-[#F4F5F0]">
               <button
                 type="button"
                 onClick={() => setIsLoggingMode(true)}

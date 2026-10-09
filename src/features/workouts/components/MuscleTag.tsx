@@ -28,7 +28,7 @@ export const MuscleTag: React.FC<MuscleTagProps> = ({ muscle, className = '' }) 
 
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold uppercase tracking-wider bg-surface-secondary border border-border-primary text-text-secondary ${className}`}
+      className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-[#EDF0EA] border border-[#DEE5DC] text-[#48544D] ${className}`}
     >
       {label}
     </span>
