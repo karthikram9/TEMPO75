@@ -46,9 +46,9 @@ export const EntryRoute: React.FC = () => {
 
   if (authLoading || challengeLoading) {
     return (
-      <div className="min-h-screen min-h-[100dvh] bg-[#090A0C] flex flex-col items-center justify-center text-neutral-400">
-        <div className="w-8 h-8 rounded-full border-2 border-[#FF5000] border-t-transparent animate-spin mb-3" />
-        <span className="text-xs uppercase font-mono tracking-wider">Verifying Session...</span>
+      <div className="min-h-screen min-h-[100dvh] bg-[#F4F5F0] flex flex-col items-center justify-center text-[#141815]">
+        <div className="w-8 h-8 rounded-full border-2 border-[#1A382B] border-t-transparent animate-spin mb-3" />
+        <span className="text-xs uppercase font-mono tracking-wider text-[#48544D]">Verifying Protocol...</span>
       </div>
     );
   }

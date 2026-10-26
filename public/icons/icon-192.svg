@@ -1,6 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="100%" height="100%">
-  <rect width="192" height="192" rx="40" fill="#090A0C"/>
-  <rect x="8" y="8" width="176" height="176" rx="32" fill="#111317" stroke="#20252D" stroke-width="3"/>
-  <path d="M52 64 H140 V82 H107 V140 H85 V82 H52 Z" fill="#F4F5F7"/>
-  <polygon points="128,118 144,95 156,95 138,122 160,140 142,140 128,126 128,140 114,140 114,124" fill="#FF5500"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" fill="#1A382B" />
+  <rect x="3" y="3" width="186" height="186" rx="42" fill="#1A382B" stroke="#2B5742" stroke-width="4"/>
+  <g transform="translate(0, 0) scale(0.375)">
+    <!-- Top Aesthetic Accent Line -->
+    <line x1="128" y1="108" x2="384" y2="108" stroke="#4E9665" stroke-width="10" stroke-linecap="round" />
+    
+    <!-- Bold Stylized Geometric T -->
+    <path d="M148 144 H364 V204 H284 V388 H228 V204 H148 Z" fill="#F4F5F0" />
+    
+    <!-- Performance Capsule with 75 Protocol Mark -->
+    <rect x="268" y="296" width="116" height="52" rx="14" fill="#244837" stroke="#3E7255" stroke-width="3" />
+    <text x="326" y="330" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', monospace" font-size="28" font-weight="900" fill="#A2B8A0" text-anchor="middle" dominant-baseline="central" letter-spacing="1">75</text>
+  </g>
 </svg>

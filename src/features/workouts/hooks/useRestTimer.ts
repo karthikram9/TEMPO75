@@ -1,16 +1,70 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import type { RestTimerState } from '@/types';
 
+const REST_TIMER_STORAGE_KEY = 'tempo:rest-timer:v1';
+
+function getStoredTimerState(): RestTimerState | null {
+  try {
+    if (typeof window === 'undefined' || !window.sessionStorage) return null;
+    const raw = window.sessionStorage.getItem(REST_TIMER_STORAGE_KEY);
+    if (!raw) return null;
+    const stored = JSON.parse(raw) as RestTimerState;
+
+    if (stored.status === 'running') {
+      const now = Date.now();
+      const remaining = Math.max(0, Math.ceil((stored.endAt - now) / 1000));
+      if (remaining <= 0) {
+        return {
+          ...stored,
+          remainingSeconds: 0,
+          status: 'completed',
+        };
+      }
+      return {
+        ...stored,
+        remainingSeconds: remaining,
+      };
+    }
+
+    return stored;
+  } catch {
+    return null;
+  }
+}
+
+function persistTimerState(state: RestTimerState) {
+  try {
+    if (typeof window === 'undefined' || !window.sessionStorage) return;
+    if (state.status === 'idle') {
+      window.sessionStorage.removeItem(REST_TIMER_STORAGE_KEY);
+    } else {
+      window.sessionStorage.setItem(REST_TIMER_STORAGE_KEY, JSON.stringify(state));
+    }
+  } catch {
+    // Ignore storage quota
+  }
+}
+
 export function useRestTimer() {
-  const [timerState, setTimerState] = useState<RestTimerState>({
-    startedAt: 0,
-    endAt: 0,
-    totalSeconds: 0,
-    remainingSeconds: 0,
-    status: 'idle',
+  const [timerState, setTimerState] = useState<RestTimerState>(() => {
+    const saved = getStoredTimerState();
+    return (
+      saved ?? {
+        startedAt: 0,
+        endAt: 0,
+        totalSeconds: 0,
+        remainingSeconds: 0,
+        status: 'idle',
+      }
+    );
   });
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Synchronize state changes to session persistence
+  useEffect(() => {
+    persistTimerState(timerState);
+  }, [timerState]);
 
   // Recalculates remaining seconds from wall-clock timestamps
   const updateTimer = useCallback(() => {
@@ -30,17 +84,21 @@ export function useRestTimer() {
           // Ignore vibration restrictions
         }
 
-        return {
+        const completedState: RestTimerState = {
           ...prev,
           remainingSeconds: 0,
           status: 'completed',
         };
+        persistTimerState(completedState);
+        return completedState;
       }
 
-      return {
+      const updatedState: RestTimerState = {
         ...prev,
         remainingSeconds: remaining,
       };
+      persistTimerState(updatedState);
+      return updatedState;
     });
   }, []);
 
@@ -61,7 +119,7 @@ export function useRestTimer() {
     };
   }, [timerState.status, updateTimer]);
 
-  // Handle visibility change (tab backgrounding / screen unlock)
+  // Handle visibility change (tab backgrounding / screen unlock / iOS suspension)
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
@@ -70,8 +128,10 @@ export function useRestTimer() {
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleVisibilityChange);
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleVisibilityChange);
     };
   }, [updateTimer]);
 
@@ -81,14 +141,16 @@ export function useRestTimer() {
     const now = Date.now();
     const endAt = now + validSeconds * 1000;
 
-    setTimerState({
+    const nextState: RestTimerState = {
       startedAt: now,
       endAt,
       totalSeconds: validSeconds,
       remainingSeconds: validSeconds,
       status: 'running',
       exerciseName,
-    });
+    };
+    persistTimerState(nextState);
+    setTimerState(nextState);
   }, []);
 
   // Pause
@@ -97,12 +159,14 @@ export function useRestTimer() {
       if (prev.status !== 'running') return prev;
       const now = Date.now();
       const remaining = Math.max(0, Math.ceil((prev.endAt - now) / 1000));
-      return {
+      const nextState: RestTimerState = {
         ...prev,
         status: 'paused',
         pausedAt: now,
         remainingSeconds: remaining,
       };
+      persistTimerState(nextState);
+      return nextState;
     });
   }, []);
 
@@ -112,12 +176,14 @@ export function useRestTimer() {
       if (prev.status !== 'paused') return prev;
       const now = Date.now();
       const endAt = now + prev.remainingSeconds * 1000;
-      return {
+      const nextState: RestTimerState = {
         ...prev,
         status: 'running',
         startedAt: now,
         endAt,
       };
+      persistTimerState(nextState);
+      return nextState;
     });
   }, []);
 
@@ -129,13 +195,15 @@ export function useRestTimer() {
       const newRemaining = prev.remainingSeconds + secondsToAdd;
       const newEndAt = prev.endAt + secondsToAdd * 1000;
 
-      return {
+      const nextState: RestTimerState = {
         ...prev,
         totalSeconds: newTotal,
         remainingSeconds: newRemaining,
         endAt: newEndAt,
         status: prev.status === 'completed' ? 'running' : prev.status,
       };
+      persistTimerState(nextState);
+      return nextState;
     });
   }, []);
 
@@ -147,39 +215,49 @@ export function useRestTimer() {
       const newEndAt = Date.now() + newRemaining * 1000;
 
       if (newRemaining <= 0) {
-        return {
+        const completedState: RestTimerState = {
           ...prev,
           remainingSeconds: 0,
           status: 'completed',
         };
+        persistTimerState(completedState);
+        return completedState;
       }
 
-      return {
+      const nextState: RestTimerState = {
         ...prev,
         remainingSeconds: newRemaining,
         endAt: newEndAt,
       };
+      persistTimerState(nextState);
+      return nextState;
     });
   }, []);
 
   // Skip
   const skipTimer = useCallback(() => {
-    setTimerState((prev) => ({
-      ...prev,
-      remainingSeconds: 0,
-      status: 'completed',
-    }));
+    setTimerState((prev) => {
+      const nextState: RestTimerState = {
+        ...prev,
+        remainingSeconds: 0,
+        status: 'completed',
+      };
+      persistTimerState(nextState);
+      return nextState;
+    });
   }, []);
 
   // Close / Reset
   const resetTimer = useCallback(() => {
-    setTimerState({
+    const idleState: RestTimerState = {
       startedAt: 0,
       endAt: 0,
       totalSeconds: 0,
       remainingSeconds: 0,
       status: 'idle',
-    });
+    };
+    persistTimerState(idleState);
+    setTimerState(idleState);
   }, []);
 
   // Format MM:SS

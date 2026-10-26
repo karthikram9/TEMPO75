@@ -48,7 +48,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({
 
   return (
     <header
-      className={`lg:hidden sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-border pt-safe transition-all select-none ${
+      className={`lg:hidden sticky top-0 z-40 w-full bg-white border-b border-border pt-safe transition-all select-none ${
         className ?? ''
       }`}
     >

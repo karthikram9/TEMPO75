@@ -1,12 +1,14 @@
-import { LocalStorageAdapter } from './localStorageAdapter';
+import { IndexedDBAdapter } from './indexedDBAdapter';
 import type { IStorageAdapter } from './types';
 
 export * from './types';
 export * from './keys';
 export * from './localStorageAdapter';
+export * from './indexedDBAdapter';
 
 /**
- * Global storage instance for TEMPO 75.
- * Can be swapped for an IndexedDB or Cloud adapter without updating feature code.
+ * Global canonical storage instance for TEMPO 75.
+ * Backed by IndexedDB for high-capacity, structured offline persistence,
+ * with automatic non-destructive migration from localStorage and dual-layer fallback.
  */
-export const storage: IStorageAdapter = new LocalStorageAdapter();
+export const storage: IStorageAdapter = new IndexedDBAdapter();

@@ -1,23 +1,32 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>TEMPO 75 — Performance Physique System</title>
     
-    <!-- PWA & Mobile Web App Meta -->
+    <!-- PWA & iOS Mobile Web App Meta -->
     <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Tempo 75" />
-    <meta name="theme-color" content="#090A0C" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="apple-mobile-web-app-title" content="TEMPO 75" />
+    <meta name="application-name" content="TEMPO 75" />
+    <meta name="format-detection" content="telephone=no" />
     
-    <!-- Favicon & Icons -->
+    <!-- Theme Colors (Home Monochromatic Green/Sage Palette) -->
+    <meta name="theme-color" content="#1A382B" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1A382B" />
+    <meta name="color-scheme" content="light" />
+    
+    <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
     
-    <!-- Preconnect Fonts -->
+    <!-- Font Fallbacks with Font-Display Swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
